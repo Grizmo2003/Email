@@ -10,10 +10,12 @@ Library in use:
 Required:
     file CSV that contain name and class which delimeter by ","
 """
+
+
+
+
 from unidecode import unidecode
 from csv import reader
-
-
 def data(pathname: str) -> tuple[list[str], list[str]]:
     """
     This method is used to Read data from csv file(Name and class)
@@ -25,8 +27,8 @@ def data(pathname: str) -> tuple[list[str], list[str]]:
         Type: tuple[list[str], list[str]]
         Value: A list contain name and a list contain class
     """
-    file = open("WContest.csv", "r", encoding="utf-8")
-    fileCSV = reader(file, delimiter = ",")
+    file = open(pathname, "r", encoding="utf-8")
+    fileCSV = reader(file, delimiter=",")
     nameData = []
     classData = []
     for row in fileCSV:
@@ -52,7 +54,7 @@ def convertName(name: str) -> str:
     return unidecode(name)
 
 
-def nameToEmail(pathname: str = "WContest.csv") -> None:
+def nameToEmail(pathname: str) -> None:
     """
     This method is used to getting email of VNU Hanoi University of Science from csv file that 
     contain name and class data. All data will write in file email.txt.
@@ -73,4 +75,4 @@ def nameToEmail(pathname: str = "WContest.csv") -> None:
 
 
 if __name__ == "__main__":
-    nameToEmail()
+    nameToEmail("WContest.csv")
